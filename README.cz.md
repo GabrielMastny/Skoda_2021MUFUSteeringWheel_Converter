@@ -27,6 +27,8 @@
 
 [![](/Images/Converter_Schema.png)]()
 
+[![](/Images/YConnector.png)]()
+
 ## využítí CAN v automobilech škoda
 
 ### CAN komfort a multifunkční volant
