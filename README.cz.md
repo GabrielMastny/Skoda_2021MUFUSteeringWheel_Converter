@@ -1,5 +1,8 @@
 # Škoda převodník pro 2021 volant s multifunkcí
 
+převodník se napojuje paralelně na sběrnici, v případě kdy by převodník přestal fungovat, sběrnice bude stále funkční.
+Připojením převodníku na spínanou pojistku 
+
 ## materiál
 
   * [Arduino uno](https://www.gme.cz/100-kompatibilni-klon-arduino-nano-v3-0-r3-original-chip) - stačí levnější klon  
