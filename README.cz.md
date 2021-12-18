@@ -2,7 +2,7 @@
 
 * Testováno na vozidle Fabia III, mělo by podporovat i další modely Octavia III, Scala, Rapid, Kamiq, Karoq, Kodiaq a pravděpodobně i vozidla na stejných platformách VolksWagen a Seat
 * Převodník se napojuje paralelně na sběrnici, v případě že by přestal z nějakého důvodu fungovat, sběrnice bude stále funkční.  
-* Připojením převodníku na spínanou pojistku bude převodník aktivni pouze pokud je elektronika vozidla zaplá (stisknutím start tlačítka, nebo otočením klíčku do polohy 1), tedy nebude odeb9rat proud pokud je auto vyplé.
+* Připojením převodníku na spínanou pojistku bude převodník aktivni pouze pokud je elektronika vozidla zaplá (stisknutím start tlačítka, nebo otočením klíčku do polohy 1), tedy nebude odebírat proud pokud je auto vyplé.
 * V době psaní návodu vychází převodník na něco málo nad 600Kč za materiál.
 
 
@@ -27,7 +27,34 @@
 
 [![](/Images/Converter_Schema.png)]()
 
+### ARDUINO + MCP2515
+
+Propojení Arduina s Arduina s MCP2515 je celkem přímočaré, kdo si nechce dělat práci s výrobou propojovacích káblíků, může si koupit už předpřipravené, zdálo se mi, že nedrží zapojení tak jak bych si přál, tak jsem si vytvořil vlastní za použití dvou pinů **N90764701**, cca 6cm kabelu s průměrem 0,35 a smrštťovačky ať se piny nedotýkají  
+
+<p align="center">
+<img src="https://github.com/GabrielMastny/Skoda_2021MUFUSteeringWheel_Converter/blob/main/Images/Pins2.png" width="250" height="250">
+<img src="https://github.com/GabrielMastny/Skoda_2021MUFUSteeringWheel_Converter/blob/main/Images/pins.png" width="250" height="250">
+</p>
+
+### Stabilizátor napětí L78S05CV
+
+Pro napájení Arduina i MCP2515, které operují na napětí 5V je použit stabilizátor napětí **L78S05CV**, kde podle schématu je:
+1) levá nožička určená pro připojení do palubní síťe vozidla, cca 1m červeného kabelu zakončený pojistkovou svorkou **N90684401**, jakou využít pozici v pojistkové skříňce se pravděpodobně bude lišit u každého modelu, vhodná pozice lze dohledat v [návodu k obsluze](https://manual.skoda-auto.com/260/cs-CZ/Models) v sekci pojistky
+2) středová nožička je zem, pro tu jsem použil zemnící bod za volantem. cca 1m černého kabelu zakončeného zemnícím **okem**
+3) pravá nožička je výstup 5V pro Arduino a MCP2515, 2x cca 6cm červeného kabelu zakončeného pinem **N90764701**
+
+### Připojení ke CAN sběrnici
+
+Pro připojení ke CAN usnadní práci vytvoření tzv. Y rozdvojky (credit [wirer](www.wirer.sk)), kde se jako vstup použijí původní žíly CAN a zdvojeným výstupem je jedna žíla nahrazující původní zapojení a druhá určená pro převodník.
+
 [![](/Images/YConnector.png)]()
+
+jsou asi dvě možnosti jak se napojit:
+1) čistší ale zároveň složitá a to vytáhnout si CAN přímo z řídící jednotky, která je utopená v palubovce u levého kolena řidiče, přístup k ní je zespodu od pedálů, pro lepší manipulaci se svazkem je asi lepší řídící jednotku uplně vyjmout, pak podle dílenské příručky vyhledat ve kterém ze svazků a které konkřetní žíly hledáme, ty jsou pak potřeba ze svazku vypíchnout 
+
+
+
+
 
 ## využítí CAN v automobilech škoda
 
