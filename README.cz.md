@@ -1,7 +1,9 @@
 # Škoda převodník pro 2021 volant s multifunkcí
 
-převodník se napojuje paralelně na sběrnici, v případě kdy by převodník přestal fungovat, sběrnice bude stále funkční.
-Připojením převodníku na spínanou pojistku 
+* Testováno na vozidle Fabia III, mělo by podporovat i další modely Octavia III, Scala, Rapid, Kamiq, Karoq, Kodiaq a pravděpodobně i vozidla na stejných platformách VolksWagen a Seat
+* Převodník se napojuje paralelně na sběrnici, v případě že by přestal z nějakého důvodu fungovat, sběrnice bude stále funkční.  
+* Připojením převodníku na spínanou pojistku bude převodník aktivni pouze pokud je elektronika vozidla zaplá (stisknutím start tlačítka, nebo otočením klíčku do polohy 1), tedy nebude odeb9rat proud pokud je auto vyplé.
+
 
 ## materiál
 
