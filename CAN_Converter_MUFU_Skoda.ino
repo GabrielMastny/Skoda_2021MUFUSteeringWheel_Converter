@@ -91,7 +91,7 @@ void loop()
       uint8_t btn_id = canMsg.data[0];
 
       if (btn_id == new_menu_BTN_ID && remapped_menu_BTN_ID != 0) ModifyAndSend(remapped_menu_BTN_ID);
-      else if (btn_id == menuBack_BTN_ID && remapped_menu_BTN_ID != 0) ModifyAndSend(remapped_menu_BTN_ID);
+      else if (btn_id == menuBack_BTN_ID && remapped_menuBack_BTN_ID != 0) ModifyAndSend(remapped_menuBack_BTN_ID);
       else if (btn_id == heatedSteeringWheel_BTN_ID && remapped_heatedSteeringWheel_BTN_ID != 0) ModifyAndSend(remapped_heatedSteeringWheel_BTN_ID);
       else if (btn_id == travelAssist_BTN_ID && remapped_travelAssist_BTN_ID != 0) ModifyAndSend(remapped_travelAssist_BTN_ID);
       else if (btn_id == assistSystems_BTN_ID && remapped_assistSystems_BTN_ID != 0) ModifyAndSend(remapped_assistSystems_BTN_ID);
