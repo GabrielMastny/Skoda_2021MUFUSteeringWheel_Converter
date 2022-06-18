@@ -2,6 +2,11 @@
   <b>Škoda převodník 2021 MUFU volantu - Škoda 2021 MUFU steeringwheel converter</b>
 </p> 
 
+tested on/testováno na:
+ - Fabia III 2015
+ - Octavia III 2017
+ - Superb III 
+
 <p align="center">
   <img src="https://github.com/GabrielMastny/Skoda_2021MUFUSteeringWheel_Converter/blob/main/Images/CConverter.png">
 </p> 
