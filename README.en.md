@@ -4,7 +4,7 @@
  
  
 
-* Tested on Fabia III MY2015 but should work also on other models. 
+* Tested on Fabia III MY2015, Octavia III MY2017, Superb III but should work also on other models. 
 * Convertor is conected paralelly to the BUS, in a case converter would stop working, BUS will be unaffected.  
 * By connecting converter to switched fuse, converter will be active only if car will be turned on by moveing key to position 1 or by pressing start button. In that case converter won't drain any power if car is switched off. Also if in any case there should be any electrical fault on convertor only fuse will be blown and car should remain unharmed.
 * Convertor doesn't stop any signals it just uses fact, that car will trow away all unsupported signals. Converter after recieving usupported signal will simply send new signal that is by car understood.
@@ -96,11 +96,12 @@ Functions of old and new steeringwheel
 | volume wheel scroll up   | 12            | 00            | 01            | 13            |
 | volume wheel scroll down | 12            | 00            | 0F            | 13            |
 | volume wheel push        | 13            | 00            | 01            | 13            |
-| source radio/bluetooth/usb| 14            | 00            | 01            | 13            |
+| src  radio/bluetooth/usb | 14            | 00            | 01            | 13            |
 | next station/music       | 15            | 00            | 01            | 13            |
 | previous station/music   | 16            | 00            | 01            | 13            |
 | voice control            | 19            | 00            | 01            | 13            |
-| phone                    | 1D            | 00            | 01            | 13            |
+| phone                    | 1C            | 00            | 01            | 13            |
+| view                     | 23            | 00            | 01            | 13            |
 
 Functions of new steeringwheel
 | Funkce                   | Byte 0-1 [HEX]| Byte 2-3 [HEX]| Byte 4-5 [HEX]| Byte 6-7 [HEX]|
@@ -109,7 +110,7 @@ Functions of new steeringwheel
 | menu zpet                | 03            | 00            | 01            | A3            |
 | vyhřívání volantu        | 25            | 00            | 01            | A3            |
 | travel assist            | 74            | 00            | 01            | A3            |
-| asistenční systémy       | 0C            | 00            | 01            | A3            |
+| assist systems           | 0C            | 00            | 01            | A3            |
 
 where 
 Byte 0-1 identifies button on steeringwheel 
@@ -146,7 +147,7 @@ const uint8_t user_EnterMenu           = 0x08;      // value 0x08 represents old
 const uint8_t user_MenuBack            = 0x00;      //
 const uint8_t user_heatedSteeringWheel = 0x00;      //
 const uint8_t user_travelAssist        = 0x00;      //
-const uint8_t user_assistSystems       = 0x1D;      // value 0x1D represents phone menu
+const uint8_t user_assistSystems       = 0x1C;      // value 0x1C represents phone menu
 // bonus - if you want to disable startstop         //
 // change false for true on line below              //
 bool disableStartStop = false;                      //
