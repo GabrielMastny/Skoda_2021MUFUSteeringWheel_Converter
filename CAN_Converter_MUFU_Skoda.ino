@@ -3,8 +3,8 @@
  *part of https://github.com/GabrielMastny/Skoda_2021MUFUSteeringWheel_Converter
  *
  * @author  Gabriel Mastny aka ExecutedDonut
- * @version 1.0
- * @date 19.12.2021
+ * @version 1.1
+ * @date 19.06.2022
  */
 
 #include <SPI.h>
@@ -36,11 +36,11 @@ const uint8_t heatedSteeringWheel_BTN_ID  = 0x25;
 const uint8_t travelAssist_BTN_ID         = 0x74;
 const uint8_t assistSystems_BTN_ID        = 0x0C;
 
-uint8_t remapped_menu_BTN_ID                = 0x08;
+uint8_t remapped_menu_BTN_ID                = 0x00;
 uint8_t remapped_menuBack_BTN_ID            = 0x00;
 uint8_t remapped_heatedSteeringWheel_BTN_ID = 0x00;
 uint8_t remapped_travelAssist_BTN_ID        = 0x00;
-uint8_t remapped_assistSystems_BTN_ID       = 0x1D;
+uint8_t remapped_assistSystems_BTN_ID       = 0x00;
 
 
 MCP2515 mcp2515(10);
@@ -60,17 +60,20 @@ void SwitchStartStop()
 
 void ModifyAndSend(uint8_t newBtnID)
 {
+  if (newBtnID == 0x00)
+  return;
+  
   canMsg.data[0] = newBtnID;
   mcp2515.sendMessage(&canMsg);
 }
 
 void setup() 
 {
-  remapped_menu_BTN_ID = (user_EnterMenu > 0)? user_EnterMenu : remapped_menu_BTN_ID;
-  remapped_menuBack_BTN_ID = (user_MenuBack > 0)? user_EnterMenu : remapped_menuBack_BTN_ID;
-  remapped_heatedSteeringWheel_BTN_ID = (user_heatedSteeringWheel > 0)? user_EnterMenu : remapped_heatedSteeringWheel_BTN_ID;
-  remapped_travelAssist_BTN_ID = (user_travelAssist > 0)? user_EnterMenu : remapped_travelAssist_BTN_ID;
-  remapped_assistSystems_BTN_ID = (user_assistSystems > 0)? user_EnterMenu : remapped_assistSystems_BTN_ID;
+  remapped_menu_BTN_ID = (user_EnterMenu > 0x00)? user_EnterMenu : remapped_menu_BTN_ID;
+  remapped_menuBack_BTN_ID = (user_MenuBack > 0x00)? user_EnterMenu : remapped_menuBack_BTN_ID;
+  remapped_heatedSteeringWheel_BTN_ID = (user_heatedSteeringWheel > 0x00)? user_EnterMenu : remapped_heatedSteeringWheel_BTN_ID;
+  remapped_travelAssist_BTN_ID = (user_travelAssist > 0x00)? user_EnterMenu : remapped_travelAssist_BTN_ID;
+  remapped_assistSystems_BTN_ID = (user_assistSystems > 0x00)? user_EnterMenu : remapped_assistSystems_BTN_ID;
   
   Serial.begin(115200);
   SPI.begin();
@@ -89,12 +92,12 @@ void loop()
     if (canMsg.can_id == mufu_BTN_CAN_ID)
     {
       uint8_t btn_id = canMsg.data[0];
-
-      if (btn_id == new_menu_BTN_ID && remapped_menu_BTN_ID != 0) ModifyAndSend(remapped_menu_BTN_ID);
-      else if (btn_id == menuBack_BTN_ID && remapped_menuBack_BTN_ID != 0) ModifyAndSend(remapped_menuBack_BTN_ID);
-      else if (btn_id == heatedSteeringWheel_BTN_ID && remapped_heatedSteeringWheel_BTN_ID != 0) ModifyAndSend(remapped_heatedSteeringWheel_BTN_ID);
-      else if (btn_id == travelAssist_BTN_ID && remapped_travelAssist_BTN_ID != 0) ModifyAndSend(remapped_travelAssist_BTN_ID);
-      else if (btn_id == assistSystems_BTN_ID && remapped_assistSystems_BTN_ID != 0) ModifyAndSend(remapped_assistSystems_BTN_ID);
+      
+      if      (btn_id == new_menu_BTN_ID) ModifyAndSend(remapped_menu_BTN_ID);
+      else if (btn_id == menuBack_BTN_ID) ModifyAndSend(remapped_menuBack_BTN_ID);
+      else if (btn_id == heatedSteeringWheel_BTN_ID) ModifyAndSend(remapped_heatedSteeringWheel_BTN_ID);
+      else if (btn_id == travelAssist_BTN_ID) ModifyAndSend(remapped_travelAssist_BTN_ID);
+      else if (btn_id == assistSystems_BTN_ID) ModifyAndSend(remapped_assistSystems_BTN_ID);
     }   
   }
 
