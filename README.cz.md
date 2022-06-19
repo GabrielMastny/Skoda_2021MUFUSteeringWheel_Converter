@@ -4,7 +4,7 @@
  
  
 
-* Testováno na vozidle Fabia III MY2015, mělo by podporovat i další modely 
+* Testováno na vozidle Fabia III MY2015, Octavia III 2017 a superbu III, mělo by podporovat i další modely 
 * Převodník se napojuje paralelně na sběrnici, v případě, že by přestal z nějakého důvodu fungovat, sběrnice bude stále funkční.  
 * Připojením převodníku na spínanou pojistku bude převodník aktivní pouze pokud je elektronika vozidla zaplá (stisknutím start tlačítka, nebo otočením klíčku do polohy 1), tedy nebude odebírat proud pokud je auto vyplé. Zárovň pokud by mělo dojít k nějaké elektrické závadě schytáto pojistka a ne celá palubní síť.
 * Převodník, žádné signály nezadržuje, využívá faktu, že auto některým signálům nového volantu nerozumí, tak je jednoduše zahodí. Převodník po poslechnutí nepodporovaného signálu na základě nastavení, které si uživatel určí, vysílá další signál, kterému by auto už mělo rozumnět.
@@ -97,6 +97,7 @@ Funkce starého i nového volantu
 | kolečko menu dolu        | 06            | 00            | 01            | 13            |
 | kolečko stisk            | 07            | 00            | 01            | 13            |
 | vstoupit do menu         | 08            | 00            | 01            | 13            |
+| asistenční systémy       | 0C            | 00            | 01            | 13            |
 | kolečko hlasitost nahoru | 12            | 00            | 01            | 13            |
 | kolečko hlasitost dolu   | 12            | 00            | 0F            | 13            |
 | kolečko hlasitost stisk  | 13            | 00            | 01            | 13            |
@@ -104,7 +105,8 @@ Funkce starého i nového volantu
 | další stanice/hudba      | 15            | 00            | 01            | 13            |
 | předchozí stanice/hudba  | 16            | 00            | 01            | 13            |
 | hlasové ovládání         | 19            | 00            | 01            | 13            |
-| telefon                  | 1D            | 00            | 01            | 13            |
+| telefon                  | 1C            | 00            | 01            | 13            |
+| view                     | 23            | 00            | 01            | 13            |
 
 Funkce nového volantu
 | Funkce                   | Byte 0-1 [HEX]| Byte 2-3 [HEX]| Byte 4-5 [HEX]| Byte 6-7 [HEX]|
@@ -113,7 +115,7 @@ Funkce nového volantu
 | menu zpet                | 03            | 00            | 01            | A3            |
 | vyhřívání volantu        | 25            | 00            | 01            | A3            |
 | travel assist            | 74            | 00            | 01            | A3            |
-| asistenční systémy       | 0C            | 00            | 01            | A3            |
+
 
 kde  
 Byte 0-1 určuje o jaké tlačítko se jedná  
@@ -138,7 +140,7 @@ Při prvním spuštění bude potřeba nastavit několik věcí:
 
 ### kód
 
-Co se  týče kódu tak vá z uživatelského pohledu bude zajímat pouze tato sekce, kde si můžete podle tabulky kódů (vždy jen byte 0-1) přemapovat tlačítka podle vlastní libosti
+Co se  týče kódu tak vás z uživatelského pohledu bude zajímat pouze tato sekce, kde si můžete podle tabulky kódů (vždy jen byte 0-1) přemapovat tlačítka podle vlastní libosti
 hodnoty se zadávají ve formátu 0xnn kde n může nabývat hexadecimálních hodnot 0-9 nebo A-H.
 
 jako takový bonus si můžete aktivovat vypnutí funkce start-stop.
