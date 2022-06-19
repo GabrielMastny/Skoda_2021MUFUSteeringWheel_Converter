@@ -153,7 +153,7 @@ const uint8_t user_EnterMenu           = 0x08;      // value 0x08 represents old
 const uint8_t user_MenuBack            = 0x00;      //
 const uint8_t user_heatedSteeringWheel = 0x00;      //
 const uint8_t user_travelAssist        = 0x00;      //
-const uint8_t user_assistSystems       = 0x1D;      // value 0x1D represents phone menu
+const uint8_t user_assistSystems       = 0x1C;      // value 0x1C represents phone menu
 // bonus - if you want to disable startstop         //
 // change false for true on line below              //
 bool disableStartStop = false;                      //
