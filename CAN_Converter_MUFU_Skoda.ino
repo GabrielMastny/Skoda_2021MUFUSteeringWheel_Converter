@@ -3,8 +3,8 @@
  *part of https://github.com/GabrielMastny/Skoda_2021MUFUSteeringWheel_Converter
  *
  * @author  Gabriel Mastny aka ExecutedDonut
- * @version 1.1
- * @date 19.06.2022
+ * @version 1.2
+ * @date 21.06.2022
  */
 
 #include <SPI.h>
@@ -13,14 +13,14 @@
 //////////////////////////////////////////////////////
 //              Set your mapping                    //
                                                     //
-const uint8_t user_EnterMenu           = 0x00;      //
-const uint8_t user_MenuBack            = 0x00;      //
+const uint8_t user_EnterMenu           = 0x08;      //
+const uint8_t user_MenuBack            = 0x08;      //
 const uint8_t user_heatedSteeringWheel = 0x00;      //
 const uint8_t user_travelAssist        = 0x00;      //
 const uint8_t user_assistSystems       = 0x00;      //
 // bonus - if you want to disable startstop         //
 // change false for true on line below              //
-bool disableStartStop = false;                      //
+bool disableStartStop = false;                       //
 //////////////////////////////////////////////////////
 // Do not touch anything below, if you are not sure // 
 // what are you doing                               //
@@ -70,10 +70,10 @@ void ModifyAndSend(uint8_t newBtnID)
 void setup() 
 {
   remapped_menu_BTN_ID = (user_EnterMenu > 0x00)? user_EnterMenu : remapped_menu_BTN_ID;
-  remapped_menuBack_BTN_ID = (user_MenuBack > 0x00)? user_EnterMenu : remapped_menuBack_BTN_ID;
-  remapped_heatedSteeringWheel_BTN_ID = (user_heatedSteeringWheel > 0x00)? user_EnterMenu : remapped_heatedSteeringWheel_BTN_ID;
-  remapped_travelAssist_BTN_ID = (user_travelAssist > 0x00)? user_EnterMenu : remapped_travelAssist_BTN_ID;
-  remapped_assistSystems_BTN_ID = (user_assistSystems > 0x00)? user_EnterMenu : remapped_assistSystems_BTN_ID;
+  remapped_menuBack_BTN_ID = (user_MenuBack > 0x00)? user_MenuBack : remapped_menuBack_BTN_ID;
+  remapped_heatedSteeringWheel_BTN_ID = (user_heatedSteeringWheel > 0x00)? user_heatedSteeringWheel : remapped_heatedSteeringWheel_BTN_ID;
+  remapped_travelAssist_BTN_ID = (user_travelAssist > 0x00)? user_travelAssist : remapped_travelAssist_BTN_ID;
+  remapped_assistSystems_BTN_ID = (user_assistSystems > 0x00)? user_assistSystems : remapped_assistSystems_BTN_ID;
   
   Serial.begin(115200);
   SPI.begin();
